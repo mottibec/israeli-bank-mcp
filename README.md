@@ -45,92 +45,19 @@ For clients that support configuration files (like Claude), add the following to
     }
 }
 ```
+## Resources
 
-## Usage
+- **Banks** (`banks://list`)
+  - List available banks and their required credentials
 
-The server provides three main functionalities:
+## Tools
 
-1. List available banks and their required credentials:
-```
-GET banks://list
-```
-Response example:
-```json
-{
-  "banks": [
-    {
-      "id": "bankId",
-      "name": "BankName",
-      "requiredCredentials": ["username", "password", "userCode"]
-    }
-  ]
-}
-```
+- **Fetch transactions** (`fetch-transactions`)
+  - Fetch transactions from a bank
+    
+- **2FA** (`two-factor-auth`)
+    - 2FA authentication for banks that require that
 
-2. Fetch transactions from a bank:
-```
-POST fetch-transactions
-{
-  "bankId": <bank_id>,
-  "credentials": {
-    "username": "<username>",  // Optional, depends on bank
-    "password": "<password>",
-    "userCode": "<user_code>", // Optional, depends on bank
-    "id": "<id>",             // Optional, depends on bank
-    "num": "<num>",           // Optional, depends on bank
-    "card6Digits": "<digits>", // Optional, depends on bank
-    "nationalID": "<id>",     // Optional, depends on bank
-    "longTermTwoFactorAuthToken": "<token>" // Optional, for 2FA
-  },
-  "startDate": "<YYYY-MM-DD>", // Optional
-  "combineInstallments": false, // Optional
-  "showBrowser": false         // Optional
-}
-```
-
-3. Handle Two-Factor Authentication:
-```
-POST two-factor-auth
-{
-  "bankId": <bank_id>,
-  "phoneNumber": "<phone_number>",
-  "action": "trigger" | "get-token",
-  "otpCode": "<code>" // Required only for "get-token" action
-}
-```
-
-### Two-Factor Authentication Flow
-
-1. First, trigger the 2FA code to be sent:
-```json
-{
-  "bankId": "onezero",
-  "phoneNumber": "0501234567",
-  "action": "trigger"
-}
-```
-
-2. After receiving the code, get a long-term token:
-```json
-{
-  "bankId": "onezero",
-  "phoneNumber": "0501234567",
-  "action": "get-token",
-  "otpCode": "123456"
-}
-```
-
-3. Use the long-term token in subsequent transactions:
-```json
-{
-  "bankId": "onezero",
-  "credentials": {
-    "username": "user",
-    "password": "pass",
-    "longTermTwoFactorAuthToken": "eyJraWQiOiJiNzU3OGM5Yy0wM2YyLTRkMzktYjBm..."
-  }
-}
-```
 
 ## Supported Banks
 
