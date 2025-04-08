@@ -1,0 +1,22 @@
+{
+  "name": "israeli-bank-mcp",
+  "version": "1.0.0",
+  "description": "A project for managing Israeli bank accounts and transactions.",
+  "main": "build/server.js",
+  "scripts": {
+    "start": "ts-node src/server.ts",
+    "build": "tsc && chmod 755 build/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "israeli-bank-scrapers": "^1.0.0",
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.0.0",
+    "zod": "^3.0.0"
+  }
+}
