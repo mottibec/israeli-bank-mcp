@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/mottibec-israeli-bank-mcp-badge.png)](https://mseep.ai/app/mottibec-israeli-bank-mcp)
+
 # Israeli Bank MCP
 
 A project for managing Israeli bank accounts and transactions using the Model Context Protocol (MCP).
